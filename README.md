@@ -1,3 +1,9 @@
+# Customized JSON Resume Theme: Dave
+🖼️ This is a slightly tweaked version of the [Dave theme](https://github.com/kneeki/jsonresume-theme-Dave). Tweaked to fit my design preferences. Published on NPM and GitHub Registry.
+
+<details>
+  <summary>Click to expand README.md of the source repository!</summary>
+
 # jsonresume-theme-Dave
 A compact theme for JSON Resume, designed for printing.
 
