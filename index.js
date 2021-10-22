@@ -102,7 +102,12 @@ function render(resume) {
         if (validateArray(resume.work)) {
             resume.work.forEach(function (block) {
                 block.startDate = formatDate(block.startDate, 1);
-                block.endDate = formatDate(block.endDate, 1);
+                if(block.endDate != 'present') {
+                    block.endDate = formatDate(block.endDate, 1);
+                }
+                else {
+                    block.endDate = 'present';
+                }
             });
         }
 
@@ -142,6 +147,33 @@ function render(resume) {
         resume: resume
     });
 }
+
+Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+	switch (operator) {
+			case '==':
+					return (v1 == v2) ? options.fn(this) : options.inverse(this);
+			case '===':
+					return (v1 === v2) ? options.fn(this) : options.inverse(this);
+			case '!=':
+					return (v1 != v2) ? options.fn(this) : options.inverse(this);
+			case '!==':
+					return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+			case '<':
+					return (v1 < v2) ? options.fn(this) : options.inverse(this);
+			case '<=':
+					return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+			case '>':
+					return (v1 > v2) ? options.fn(this) : options.inverse(this);
+			case '>=':
+					return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+			case '&&':
+					return (v1 && v2) ? options.fn(this) : options.inverse(this);
+			case '||':
+					return (v1 || v2) ? options.fn(this) : options.inverse(this);
+			default:
+					return options.inverse(this);
+	}
+});
 
 module.exports = {
     render: render

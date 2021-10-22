@@ -14,19 +14,19 @@
             <!-- Name, title -->
             {{#resume.basics}}
             <h3 class="sm-margin-bottom no-margin-top" style="line-height: .8;">
-                {{name}}
-                {{#if label}}<span style="font-weight: bold;">{{label}}</span>{{/if}}
+                <span style="font-weight: bold;">{{name}}</span>
+                {{#if label}}<span style="font-size: .8em;">{{label}}</span>{{/if}}
             </h3>
 
             {{#if summary}}
-            <p class="newspaper">{{summary}}</p>
+            <p class="newspaper" style="margin-top: 20px;">{{summary}}</p>
             {{/if}}
             {{/resume.basics}}
 
             <!-- LEFT COLUMN -->
             <div class="col-xs-3 no-padding">
                 <div class="page-header no-margin">
-                    <h5>ABOUT</h5>
+                    <h5 style="padding-top: 15px;">ABOUT</h5>
                 </div>
 
                 <!-- LEFT COLUMN: Address, contact information -->
@@ -35,27 +35,26 @@
                     <ul class="no-bullets no-padding-left no-margin-bottom">
                         <li>
                             {{#location}}
-                            {{#if city}}{{city}}{{/if}}
-                            {{#if region}}{{region}}{{/if}}
+                            {{#if address}}{{address}},{{/if}}
                             {{#if countryCode}}{{countryCode}}{{/if}}
                             {{/location}}
                         </li>
-                        <li>
-                            {{#if email}}<a href="mailto:{{email}}">{{email}}</a>{{/if}}
-                        </li>
-                        <Li>{{#if phone}}{{phone}}{{/if}}</Li>
+                        <Li>{{#if phone}}<a href="tel:{{phone}}">{{phone}}</a>{{/if}}</Li>
                     </ul>
                     <!-- // LEFT COLUMN: Address, contact information -->
 
 
                     <!-- LEFT COLUMN: Social Networking -->
                     {{#if profiles.length}}
-                    <ul class="no-bullets no-padding-left">
+                    <ul class="no-bullets no-padding-left no-margin-bottom">
                         {{#each profiles}}
                         <li><a href="{{url}}">{{network}}</a></li>
                         {{/each}}
                     </ul>
                     {{/if}}
+                    <ul class="no-bullets no-padding-left">
+                        <li>{{#if email}}<a href="mailto:{{email}}">{{email}}</a>{{/if}}</li>
+                    </ul>
                     {{/resume.basics}}
                     <!-- // LEFT COLUMN: Social Networking -->
 
@@ -137,7 +136,7 @@
                 <!-- RIGHT COLUMN: Experience -->
                 {{#if resume.work.length}}
                 <div class="page-header no-margin-bottom lg-margin-top">
-                    <h5>PROFESSIONAL EXPERIENCE</h5>
+                    <h5>EXPERIENCE</h5>
                 </div>
 
                 <div class="print-together">
@@ -145,15 +144,14 @@
                     <div class="no-page-break">
                         <h6 class="job-title sm-margin-top no-margin-bottom">
                             <span class="job-details">
-                                {{#if hours}}{{hours}} HRS per week<br />{{/if}}
-                                {{#if salary}}{{salary}}<br />{{/if}}
-                                {{#if startDate}}
-                                {{#if startDate}}{{startDate}}{{/if}} to {{#if endDate}}{{endDate}}{{else}}Present{{/if}}
-                                {{/if}}
+                                {{#if startDate}}{{startDate}}{{/if}} - 
+                                {{#ifCond endDate '!=' 'present'}}{{endDate}}
+                                {{else}}Present
+                                {{/ifCond}}
                             </span>
 
                             {{#if position}}{{position}}{{/if}}
-                            {{#if company}}<br /><small style="font-size: 90%;">{{company}}</small>{{/if}}
+                            {{#if name}}<br /><small style="font-size: 90%;">{{name}}</small>{{/if}}
                         </h6>
 
                         <div class="clearfix"></div>
@@ -197,7 +195,7 @@
                         <h6 class="job-title sm-margin-top no-margin">
                             {{#if startDate}}
                             <span class="education-date">
-                                {{#if startDate}}{{startDate}}{{/if}} to {{#if endDate}}{{endDate}}{{else}}Present{{/if}}
+                                {{#if startDate}}{{startDate}}{{/if}} - {{#if endDate}}{{endDate}}{{else}}Present{{/if}}
                             </span>
                             {{/if}}
 
@@ -209,7 +207,7 @@
                         <p class="education-details no-margin">
                             {{#if studyType}}{{studyType}},{{/if}}
                             {{#if area}}{{area}}{{/if}}
-                            {{#if gpa}}, GPA: {{gpa}}{{/if}}
+                            {{#if score}}, GPA: {{score}}{{/if}}
                         </p>
 
                         <div class="clearfix"></div>
@@ -346,6 +344,29 @@
                 {{/if}}
                 <!-- // RIGHT COLUMN: Publications -->
 
+                <!-- RIGHT COLUMN: Experience -->
+                {{#if resume.projects.length}}
+                <div class="page-header no-margin-bottom lg-margin-top">
+                    <h5>PROJECTS</h5>
+                </div>
+
+                <div class="print-together">
+                    {{#each resume.projects}}
+                    <div class="no-page-break">
+                        <h6 class="job-title sm-margin-top no-margin-bottom">
+                            {{#if name}}{{name}}{{/if}}
+                        </h6>
+                        <div class="clearfix"></div>
+                        {{#if summary}}
+                        <p class="sm-margin-top newspaper">{{summary}}</p>
+                        {{/if}}
+                    </div>
+                    {{/each}}
+
+                </div>
+                {{/if}}
+                <!-- // RIGHT COLUMN: Experience -->
+
 
                 <!-- RIGHT COLUMN: Awards  -->
                 {{#if resume.awards.length}}
@@ -357,12 +378,6 @@
 
                         {{#each resume.awards}}
                         <h6 class="job-title sm-margin-top no-margin">
-                            {{#if date}}
-                            <span class="education-date">
-                                {{#if date}}{{date}}{{/if}}
-                            </span>
-                            {{/if}}
-
                             {{#if title}}{{title}}{{/if}}
                         </h6>
 
@@ -371,7 +386,6 @@
                         <p class="education-details no-margin">
                             {{#if awarder}}{{awarder}}{{/if}}
                             <br />
-                            {{#if summary}}{{summary}}{{/if}}
                         </p>
 
                         <div class="clearfix"></div>

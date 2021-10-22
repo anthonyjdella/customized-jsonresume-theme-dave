@@ -1458,7 +1458,7 @@ body {
 .container {
     margin: 0 auto;
     max-width: 8.5in;
-    padding: 80px 100px;
+    padding: 80px 80px;
     background: #fff;
     border: 1px solid #ccc;
     box-shadow: 2px 2px 4px #aaa;
