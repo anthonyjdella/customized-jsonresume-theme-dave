@@ -1527,7 +1527,7 @@ body {
 
 .job-title {
     float: left;
-    font-size: 15px;
+    font-size: 13px;
     width: 100%;
 }
 
@@ -1584,5 +1584,10 @@ body {
     .container {
         margin: 0px;
         padding: 0px;
+    }
+
+    .print-together:nth-child(even){
+        color: red;
+        background-color: yellow;
     }
 }

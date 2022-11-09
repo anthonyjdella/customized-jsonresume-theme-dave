@@ -14,7 +14,7 @@
             <!-- Name, title -->
             {{#resume.basics}}
             <h3 class="sm-margin-bottom no-margin-top" style="line-height: .8;">
-                <span style="font-weight: bold;">{{name}}</span>
+                <span style="font-weight: bold;">{{name}}</span><br>
                 {{#if label}}<span style="font-size: .8em;">{{label}}</span>{{/if}}
             </h3>
 
@@ -58,6 +58,101 @@
                     {{/resume.basics}}
                     <!-- // LEFT COLUMN: Social Networking -->
 
+                {{#if resume.education.length}}
+                <div class="print-together">
+                    <div class="no-page-break">
+                        <div class="page-header no-margin-bottom lg-margin-top">
+                            <h5>EDUCATION</h5>
+                        </div>
+
+                        {{#each resume.education}}
+                        <h7 class="job-title sm-margin-top no-margin">
+
+                            {{#if institution}}{{institution}}{{/if}}
+                        </h7>
+
+                        <div class="clearfix"></div>
+
+                        <p class="education-details no-margin">
+                            {{#if studyType}}{{studyType}},{{/if}}
+                            {{#if area}}{{area}}{{/if}}
+                        </p>
+
+                        <div class="clearfix"></div>
+
+                        {{#if courses.length}}
+                        <ul class="no-margin-bottom">
+                            {{#each courses}}
+                            <li>{{.}}</li>
+                            {{/each}}
+                        </ul>
+                        {{/if}}
+
+                        {{/each}}
+                    </div>
+                </div>
+                {{/if}}
+
+                {{#if resume.speaking.length}}
+                <div class="page-header no-margin-bottom lg-margin-top">
+                    <h5>PUBLIC SPEAKING</h5>
+                </div>
+
+                <div class="print-together">
+                    {{#each resume.speaking}}
+                    <div class="no-page-break">
+                        <h6 class="job-title sm-margin-top no-margin-bottom">
+
+                            {{#if event}}{{event}}{{/if}}
+                            {{#if topic}}<br /><small style="font-size: 90%;"><a href="{{reference}}">{{topic}}</a></small>{{/if}}
+                        </h6>
+
+                        <div class="clearfix"></div>
+
+                    </div>
+
+
+                    {{#if highlights.length}}
+                    <ul>
+                        {{#each highlights}}
+                        <li>{{.}}</li>
+                        {{/each}}
+                    </ul>
+                    {{/if}}
+                    {{/each}}
+
+                </div>
+                {{/if}}
+
+                {{#if resume.writing.length}}
+                <div class="page-header no-margin-bottom lg-margin-top">
+                    <h5>ARTICLES</h5>
+                </div>
+
+                <div class="print-together">
+                    {{#each resume.writing}}
+                    <div class="no-page-break">
+                        <h6 class="job-title sm-margin-top no-margin-bottom">
+
+                            {{#if reference}}<br /><small style="font-size: 90%;"><a href="{{reference}}">{{name}}</a></small>{{/if}}
+                        </h6>
+
+                        <div class="clearfix"></div>
+
+                    </div>
+
+
+                    {{#if highlights.length}}
+                    <ul>
+                        {{#each highlights}}
+                        <li>{{.}}</li>
+                        {{/each}}
+                    </ul>
+                    {{/if}}
+                    {{/each}}
+
+                </div>
+                {{/if}}
 
                     <!-- LEFT COLUMN: Skills -->
                     {{#if resume.skills.length}}
@@ -184,7 +279,7 @@
 
 
                 <!-- RIGHT COLUMN: Education -->
-                {{#if resume.education.length}}
+                {{!-- {{#if resume.education.length}}
                 <div class="print-together">
                     <div class="no-page-break">
                         <div class="page-header no-margin-bottom lg-margin-top">
@@ -223,7 +318,7 @@
                         {{/each}}
                     </div>
                 </div>
-                {{/if}}
+                {{/if}} --}}
                 <!-- // RIGHT COLUMN: Education -->
 
 
@@ -354,7 +449,7 @@
                     {{#each resume.projects}}
                     <div class="no-page-break">
                         <h6 class="job-title sm-margin-top no-margin-bottom">
-                            {{#if name}}{{name}}{{/if}}
+                            {{#if name}}<a href={{url}}>{{name}}</a>{{/if}}
                         </h6>
                         <div class="clearfix"></div>
                         {{#if summary}}

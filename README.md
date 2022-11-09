@@ -1,6 +1,31 @@
 # Customized JSON Resume Theme: Dave
 🖼️ This is a slightly tweaked version of the [Dave theme](https://github.com/kneeki/jsonresume-theme-Dave). Tweaked to fit my design preferences. Published on NPM and GitHub Registry.
 
+## Notable Changes
+
+* 2 Page version in PDF/printable mode 
+* Added sections for speaking and articles
+* Style changes
+
+## Prerequisites
+
+To build and start the local server, it needs to use the cli command, which is custom cli I tweaked.
+
+`npm i @anthonyjdella/customized-resume-cli`
+
+## How to Start
+
+`npm run start`
+
+## How to Change
+
+* `resume.hbs` is the order of the resume.
+* `style.css` is the styling
+* To make changes to the PDF/printable version, make changes in the `@print` section of `style.css`
+* Change version number in `package.json`
+* Deploy the changes via `npm publish --access public`
+* To see changes from `resume.anthonydellavecchia.com` you need to go to the [registry project](https://github.com/anthonyjdella/customized-registry-functions), then cd into `functions`, run `npm i` and `npm update`, then `firebase deploy`.
+
 ## Usage
 * `npm run start` to start local server.
 * `npm run build` to build public dir.
